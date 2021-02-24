@@ -1,5 +1,8 @@
-//import axios from 'axios';
+import axios from 'axios';
 
 export default {
-    a: 'x'
+    GetZen: async function() {
+        console.log(`GetZen github service`);
+        return axios.get(`https://api.github.com/zen`)
+    }
 }

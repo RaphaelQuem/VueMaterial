@@ -1,4 +1,3 @@
-import axios from 'axios';
 import github from '../../services/github';
 
 const state = {
@@ -15,9 +14,9 @@ const mutations = {
 
 const actions = {
     async getZen({ commit }){
-        console.log(github);
-        const response = await axios.get(`https://api.github.com/zen`);
-        commit('Zen', response.data);
+        await github.GetZen()
+            .then(({data}) => commit('Zen', data))
+            .catch(({error}) => commit('Zen', error));
     }
 };
 
@@ -29,3 +28,4 @@ export default {
     actions,
     mutations
 }
+
